@@ -1,0 +1,98 @@
+WHAT DO YOU KNOW SO FAR???
+a lot.
+
+print
+print statement - displays a word, phrase or characters to the console
+
+#
+octothorpe - anything after the octothorpe/hash/pound symbol becomes a comment and has no actual affect on the code
+
+" " / ' '
+double/single quotes - anything inside of a pair of quotes/double quotes is a string, kind of like a mini text file
+
+() 
+parenthesis - a pair parenthesis encases the arguments of some commands, such as print
+
++ 
+plus - the plus sign can be used to add 2 numbers or print 2 seperated strings/variables on the same line
+
++= 
+plusequals - adds a number and a vraiable and sets the variable to the sum
+
+- 
+minus - minus sign subtracts numbers
+
+*
+multiply - multiplication sign multiplies numbers 
+
+\
+divide - division sign division sign divides numbers
+
+= 
+equals - the equal sign sets a variable to a value 
+
+>
+greater than - compares 2 numbers, if the one on the right is bigger than the one on the left, it returns True. If not, it returns False
+
+<
+less than - compares 2 numbers, if the one on the right is smaller than the one on the left, it returns True. If not, it returns False
+
+{ } 
+curly brackets - inside of a string, any variable inside of 2 curly brackets will be replace by the value of that variable
+
+f
+format string - used before a string to identify that string as a format string
+
+end = ' '
+end - used after a string to make the end of the string not automatically go to a new line
+
+\n 
+newline - used to go to a new line
+
+\t
+tab - used to enter a tab
+
+\\
+backslash - used to create a backslash
+
+"""   """
+triple quotes - anything inside a pair of 3 double quotes is a string, but you can write it over multiple lines.
+
+"some string {}".format(  )
+.format - replaces the curly brackets inside the string with whatever's in the parenthesis
+
+input()
+request for the user to type something
+
+import 
+gets more commands and code for you to use, depending on the module you import
+
+argv 
+makes it so that you have to type in extra arguments when running the file in a bash console
+
+open()
+opens a file
+
+.read()
+reads a file
+
+.close()
+closes a file
+
+.truncate()
+erases the contents of a file
+
+.write()
+writes something to a file
+
+def 
+define - defines something as a function
+
+.seek()
+goes to a certain line in the file
+
+.readline()
+reads only one line
+
+return
+when a variable is set to an instance of a function, it's value is determined by the return statement 

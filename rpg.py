@@ -70,44 +70,34 @@ def battleInit(monster):
                 if(monsterHealth > 0):
                     print("The " + monster + " has " + str(monsterHealth) + " health left!")
                 else:
-                    if story == True:
-                        time.sleep(.5)
-                        print("The " + monster + "'s health goes below 0...")
-                        time.sleep(.5)
-                        print("But the " + monster + " didn't die?")
-                    else:
-                        time.sleep(.5)
-                        print("The " + monster + " is slain!!")
-                        time.sleep(.5)
-                        print("You collected 'gold' and 'exp'.")
+                    break
             else:
                 print("You struck the " + monster + " for " + str(damage) + " damage!")
                 monsterHealth = monsterHealth - damage
                 if(monsterHealth > 0):
                     print("The " + monster + " has " + str(monsterHealth) + " health left!")
                 else:
-                    if story == True:
-                        time.sleep(.5)
-                        print("The " + monster + "'s health goes below 0...")
-                        time.sleep(.5)
-                        print("But the " + monster + " didn't die?")
-                    else:
-                        time.sleep(.5)
-                        print("The " + monster + " is slain!!")
-                        time.sleep(.5)
-                        print("You collected 'gold' and 'exp'.")
+                    break
         elif item == "crumpled up piece of paper." and action == "read paper" or item == "crumpled up piece of paper." and action == "read":
             print("You unfold and read the piece of paper. It's a badly drawn picture of a banana. I don't know what it means either.")
         elif action == "die":
             monsterHealth = monsterHealth - 50000
         else:
             print("That won't work...")
+    
+    if story == True:
+        time.sleep(.5)
+        print("The " + monster + "'s health goes below 0...")
+        time.sleep(.5)
+        print("But the " + monster + " didn't die?")
     else:
-
-
-
-#scroll("Tester")
-
+        time.sleep(.5)
+        print("The " + monster + " is slain!!")
+        time.sleep(.5)
+        print("You collected 'gold' and 'exp'.")
+        
+#/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/#        
+#------BEGINNING OF STORY-------#
 time.sleep(1)
 print("A gelatinous monster seeps out of nowhere!")
 time.sleep(.5)
@@ -121,12 +111,14 @@ if answer == 'Y' or answer == 'y':
 
     battleInit("Gelaton")
 
+    print("Well", end = "")
+    time.sleep(.5)
+    print(".", end = "")
+    time.sleep(.5)
+    print(".", end = "")
+    time.sleep(.5)
+    print(".", end = "")
 else:
     print("You ran away!")
-
-
-
-
-
 
 
