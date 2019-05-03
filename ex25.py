@@ -1,3 +1,6 @@
+# These functions already have their own descriptions so I don't really
+# have anything to comment on
+
 def break_words(stuff):
     """This function will break up words for us."""
     words = stuff.split(' ')
