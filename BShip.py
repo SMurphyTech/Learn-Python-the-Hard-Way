@@ -54,22 +54,25 @@ def check_repeats(choiceX, choiceY):
                 
                 #print("lastY = " + str(respectiveY))
                 if choiceY == respectiveY:
-                    print("repeat!") 
-                    
-                    repeat = True
+                    #print("repeat!") 
+                    return True
+                else:
+                    return False
 
 
 def randomize_boats(how_many):
     count = 0
+    boat_num = 0
+    broken = False
     
-    for i in range(how_many):
-        
+    while count <= how_many - 1:
         # determines if boat is horizontal or vertical
         direction = random.randint(1, 2)
+        broken = False
         
         # vertical
         if(direction == 1):
-            print("vertical")
+            #print("vertical")
             # determines length of the boat
             length = random.randint(1, 4)
             
@@ -79,36 +82,61 @@ def randomize_boats(how_many):
             
             # starts with random coords, then extends the boat to random length
             for r in range(length):
-                check_repeats(chance2, chance1)
-                if(repeat == True):
+                if(check_repeats(chance2, chance1)):
+                    boatX[count].clear()
+                    boatY[count].clear()
+                    count -= 1
+                    broken = True
                     break
-                boatX[count].append(chance2)
-                boatY[count].append(chance1)
-                chance1 += 1
+                else:
+                    boatX[count].append(chance2)
+                    boatY[count].append(chance1)
+                    if chance1 + 1 <= 6:
+                        chance1 += 1
+                    else:
+                        break
+            
+            if(broken != True):
+                boat_num += 1
+                #print(boat_num)
+                
         
         # horizontal
         else:
-            print("horizontal")
+            #print("horizontal")
+            
             length = random.randint(1, 4)
             
             chance1 = random.randint(1, 6)
             chance2 = random.randint(1, 6)
             
             for r in range(length):
-                check_repeats(chance2, chance1)
-                if(repeat == True):
+                if(check_repeats(chance2, chance1)):
+                    boatX[count].clear()
+                    boatY[count].clear()
+                    count -= 1
+                    broken = True
                     break
-                boatX[count].append(chance2)
-                boatY[count].append(chance1)
-                chance2 += 1
+                else:
+                    boatX[count].append(chance2)
+                    boatY[count].append(chance1)
+                    if chance2 + 1 <= 6:
+                        chance2 += 1
+                    else:
+                        break
+            
+            if(broken != True):
+                boat_num += 1
+                #print(boat_num)
+            
         
         count += 1
         #print(count)
 
 randomize_boats(4)
 
-print(boatX)
-print(boatY)
+#print(boatX)
+#print(boatY)
 
 print_grid()
 
@@ -118,57 +146,62 @@ def guess():
 
     spotX = int(spotX)
     spotY = int(spotY)
-
-    # to keep track of what index 'num' is at in boatX
-    count1 = 0
-    count2 = 0
     
-    hit = False
-
-    for boat in boatX:
-        
-        if(hit == True):
-            break
-        
-        count1 += 1
-        print(count1)
-        print(boat)
-        
-        yboat = boatY[count1 - 1]
-        
-        print(yboat)
-        
+    if(spotY > 6 or spotX > 6):
+        print("too big for the grid!")
+    else:
+        # to keep track of what index 'num' is at in boatX
+        count1 = 0
         count2 = 0
+    
+        hit = False
+
+        for boat in boatX:
         
-        for block in boat:
-            count2 += 1
-            print(count2 - 1)
+            if(hit == True):
+                break
+        
+            count1 += 1
+            #print(count1)
+            #print(boat)
+        
+            yboat = boatY[count1 - 1]
+        
+            #print(yboat)
+        
+            count2 = 0
+        
+            for block in boat:
+                count2 += 1
+                #print(count2 - 1)
             
-            if spotX == block:
-                if(spotY == yboat[count2 - 1]):
-                    print("HIT!!")
-                    hit = True
-                    vertical[spotY - 1].pop(spotX - 1)
-                    vertical[spotY - 1].insert(spotX - 1, "X  ")
-                    boat.pop(count2 - 1)
-                    yboat.pop(count2 - 1)
-                    
-                    if(len(boat) == 0 and len(yboat) == 0):
-                        print("Boat destroyed!")
-                        #boatCount += 1
-                    break
+                if spotX == block:
+                    if(spotY == yboat[count2 - 1]):
+                        print("HIT!!")
+                        hit = True
+                        vertical[spotY - 1].pop(spotX - 1)
+                        vertical[spotY - 1].insert(spotX - 1, "X  ")
+                        boat.pop(count2 - 1)
+                        yboat.pop(count2 - 1)
+                        
+                        if(len(boat) == 0 and len(yboat) == 0):
+                            print("Boat destroyed!")
+                            #boatCount += 1
+                        break
+                    else:
+                        print("miss..")
+                        vertical[spotY - 1].pop(spotX - 1)
+                        vertical[spotY - 1].insert(spotX - 1, "-  ")
                 else:
                     print("miss..")
                     vertical[spotY - 1].pop(spotX - 1)
                     vertical[spotY - 1].insert(spotX - 1, "-  ")
-            else:
-                print("miss..")
-                vertical[spotY - 1].pop(spotX - 1)
-                vertical[spotY - 1].insert(spotX - 1, "-  ")
+            
+            
+    
+        print_grid()
+    
         
-        
-
-    print_grid()
     
 
 tries = 10
