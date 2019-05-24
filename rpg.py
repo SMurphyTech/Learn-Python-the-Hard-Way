@@ -24,10 +24,6 @@ PP = Restorative("Pink Potion", 10)
 
 equipped = BBoom
 
-if test == True:
-    print(equipped.damage)
-    print(PP.hp)
-
 # current inventory (item : quantity)
 inventory = {
      BBoom : 1,
